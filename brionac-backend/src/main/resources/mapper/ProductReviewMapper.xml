@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.brionac.mapper.ProductReviewMapper">
+
+    <resultMap id="BaseResultMap" type="com.brionac.entity.domain.ProductReview">
+            <id property="reviewId" column="review_id" jdbcType="INTEGER"/>
+            <result property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="accountNumber" column="account_number" jdbcType="VARCHAR"/>
+            <result property="productId" column="product_id" jdbcType="INTEGER"/>
+            <result property="productNo" column="product_no" jdbcType="VARCHAR"/>
+            <result property="productSpecs" column="product_specs" jdbcType="VARCHAR"/>
+            <result property="orderNo" column="order_no" jdbcType="VARCHAR"/>
+            <result property="reviewTime" column="review_time" jdbcType="TIMESTAMP"/>
+            <result property="starLevel" column="star_level" jdbcType="DOUBLE"/>
+            <result property="productReview" column="product_review" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        review_id,user_id,account_number,
+        product_id,product_no,product_specs,
+        order_no,review_time,star_level,
+        product_review
+    </sql>
+</mapper>

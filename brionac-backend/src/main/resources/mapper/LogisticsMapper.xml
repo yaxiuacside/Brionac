@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.brionac.mapper.LogisticsMapper">
+
+    <resultMap id="BaseResultMap" type="com.brionac.entity.domain.Logistics">
+            <id property="logisticId" column="logistic_id" jdbcType="INTEGER"/>
+            <result property="orderNo" column="order_no" jdbcType="VARCHAR"/>
+            <result property="sender" column="sender" jdbcType="VARCHAR"/>
+            <result property="senderTel" column="sender_tel" jdbcType="VARCHAR"/>
+            <result property="senderAdd" column="sender_add" jdbcType="VARCHAR"/>
+            <result property="receiver" column="receiver" jdbcType="VARCHAR"/>
+            <result property="receiverTel" column="receiver_tel" jdbcType="VARCHAR"/>
+            <result property="receiverAdd" column="receiver_add" jdbcType="VARCHAR"/>
+            <result property="parcelName" column="parcel_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        logistic_id,order_no,sender,
+        sender_tel,sender_add,receiver,
+        receiver_tel,receiver_add,parcel_name
+    </sql>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.brionac.mapper.SpecsMapper">
+
+    <resultMap id="BaseResultMap" type="com.brionac.entity.domain.Specs">
+            <id property="specsId" column="specs_id" jdbcType="INTEGER"/>
+            <result property="productId" column="product_id" jdbcType="INTEGER"/>
+            <result property="specsName" column="specs_name" jdbcType="VARCHAR"/>
+            <result property="productType" column="product_type" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        specs_id,product_id,specs_name,
+        product_type
+    </sql>
+</mapper>

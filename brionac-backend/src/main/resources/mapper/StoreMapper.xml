@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.brionac.mapper.StoreMapper">
+
+    <resultMap id="BaseResultMap" type="com.brionac.entity.domain.Store">
+            <id property="storeId" column="store_id" jdbcType="BIGINT"/>
+            <result property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="selfOperated" column="self_operated" jdbcType="BIT"/>
+            <result property="storeDisable" column="store_disable" jdbcType="VARCHAR"/>
+            <result property="storeLogo" column="store_logo" jdbcType="VARCHAR"/>
+            <result property="storeName" column="store_name" jdbcType="VARCHAR"/>
+            <result property="storeAddressDetail" column="store_address_detail" jdbcType="VARCHAR"/>
+            <result property="storeAddressIdPath" column="store_address_id_path" jdbcType="VARCHAR"/>
+            <result property="storeAddressPath" column="store_address_path" jdbcType="VARCHAR"/>
+            <result property="storeDesc" column="store_desc" jdbcType="VARCHAR"/>
+            <result property="deliveryScore" column="delivery_score" jdbcType="DECIMAL"/>
+            <result property="descriptionScore" column="description_score" jdbcType="DECIMAL"/>
+            <result property="serviceScore" column="service_score" jdbcType="DECIMAL"/>
+            <result property="goodsNum" column="goods_num" jdbcType="INTEGER"/>
+            <result property="collectionNum" column="collection_num" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        store_id,user_id,self_operated,
+        store_disable,store_logo,store_name,
+        store_address_detail,store_address_id_path,store_address_path,
+        store_desc,delivery_score,description_score,
+        service_score,goods_num,collection_num
+    </sql>
+</mapper>

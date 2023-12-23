@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.brionac.mapper.ShoppingCartMapper">
+
+    <resultMap id="BaseResultMap" type="com.brionac.entity.domain.ShoppingCart">
+            <id property="cartId" column="cart_id" jdbcType="INTEGER"/>
+            <result property="accountNumber" column="account_number" jdbcType="VARCHAR"/>
+            <result property="productId" column="product_id" jdbcType="INTEGER"/>
+            <result property="payAmount" column="pay_amount" jdbcType="INTEGER"/>
+            <result property="specsId" column="specs_id" jdbcType="INTEGER"/>
+            <result property="productSpecs" column="product_specs" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        cart_id,account_number,product_id,
+        pay_amount,specs_id,product_specs
+    </sql>
+</mapper>
