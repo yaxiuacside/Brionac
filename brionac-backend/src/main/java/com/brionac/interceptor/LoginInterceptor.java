@@ -20,8 +20,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         // HttpServletRequest对象来获取session对象
         Object obj = request.getSession().getAttribute(USER_SESSION_KEY);
         if(obj==null){
-            //结束后续的调用
-            return false;
+            throw new RuntimeException("请先登录");
         }
         log.info("登录用户 -- >"+obj);
         //请求放行

@@ -11,25 +11,16 @@
             <result property="productName" column="product_name" jdbcType="VARCHAR"/>
             <result property="productTypeId" column="product_type_id" jdbcType="INTEGER"/>
             <result property="productType" column="product_type" jdbcType="VARCHAR"/>
-            <result property="productBrandId" column="product_brand_id" jdbcType="VARCHAR"/>
-            <result property="productBrand" column="product_brand" jdbcType="VARCHAR"/>
-            <result property="inPrice" column="in_price" jdbcType="DOUBLE"/>
-            <result property="outPrice" column="out_price" jdbcType="DOUBLE"/>
-            <result property="productStock" column="product_stock" jdbcType="INTEGER"/>
-            <result property="lowestStock" column="lowest_stock" jdbcType="INTEGER"/>
-            <result property="isStockout" column="is_stockout" jdbcType="TINYINT"/>
+            <result property="traffic" column="traffic" jdbcType="BIGINT"/>
+            <result property="saleTime" column="sale_time" jdbcType="TIMESTAMP"/>
             <result property="isNew" column="is_new" jdbcType="TINYINT"/>
             <result property="isSale" column="is_sale" jdbcType="TINYINT"/>
-            <result property="saleTime" column="sale_time" jdbcType="TIMESTAMP"/>
-            <result property="productUrl" column="product_url" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         product_id,store_id,product_no,
         product_name,product_type_id,product_type,
-        product_brand_id,product_brand,in_price,
-        out_price,product_stock,lowest_stock,
-        is_stockout,is_new,is_sale,
-        sale_time,product_url
+        traffic,sale_time,is_new,
+        is_sale
     </sql>
 </mapper>

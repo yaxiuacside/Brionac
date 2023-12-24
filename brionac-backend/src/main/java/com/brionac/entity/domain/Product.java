@@ -4,9 +4,10 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
 
 /**
  * 商品表
@@ -52,46 +53,16 @@ public class Product implements Serializable {
     private String productType;
 
     /**
-     * 品牌id
+     * 流量热度
      */
-    @TableField(value = "product_brand_id")
-    private String productBrandId;
+    @TableField(value = "traffic")
+    private Long traffic;
 
     /**
-     * 品牌
+     * 上架时间
      */
-    @TableField(value = "product_brand")
-    private String productBrand;
-
-    /**
-     * 进价
-     */
-    @TableField(value = "in_price")
-    private Double inPrice;
-
-    /**
-     * 售价
-     */
-    @TableField(value = "out_price")
-    private Double outPrice;
-
-    /**
-     * 库存
-     */
-    @TableField(value = "product_stock")
-    private Integer productStock;
-
-    /**
-     * 最低库存
-     */
-    @TableField(value = "lowest_stock")
-    private Integer lowestStock;
-
-    /**
-     * 是否缺货
-     */
-    @TableField(value = "is_stockout")
-    private Integer isStockout;
+    @TableField(value = "sale_time")
+    private Date saleTime;
 
     /**
      * 是否新品
@@ -104,18 +75,6 @@ public class Product implements Serializable {
      */
     @TableField(value = "is_sale")
     private Integer isSale;
-
-    /**
-     * 上架时间
-     */
-    @TableField(value = "sale_time")
-    private Date saleTime;
-
-    /**
-     * 商品图片
-     */
-    @TableField(value = "product_url")
-    private String productUrl;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

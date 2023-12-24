@@ -58,38 +58,38 @@ DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product`  (
     `product_id` int(5) NOT NULL AUTO_INCREMENT COMMENT '商品id',
     `store_id` int(5) NOT NULL COMMENT '店铺ID',
-    `product_no` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品编号',
-    `product_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品名称',
+    `product_no` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT null COMMENT '商品编号',
+    `product_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT null COMMENT '商品名称',
     `product_type_id` int(5) NULL DEFAULT NULL COMMENT '商品类别id',
-    `product_type` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品类别',
-    `product_brand_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '品牌id',
-    `product_brand` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '品牌',
-    `in_price` double NOT NULL COMMENT '进价',
-    `out_price` double NOT NULL COMMENT '售价',
-    `product_stock` int(6) NOT NULL COMMENT '库存',
-    `lowest_stock` int(6) NOT NULL COMMENT '最低库存',
-    `is_stockout` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否缺货',
-    `is_new` tinyint(1) NOT NULL DEFAULT 1 COMMENT '是否新品',
-    `is_sale` tinyint(1) NOT NULL DEFAULT 1 COMMENT '是否上架',
+    `product_type` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT null COMMENT '商品类别',
+    `traffic` bigint NULL default 0 comment '流量热度',
     `sale_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '上架时间',
-    `product_url` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品图片',
+    `is_new` tinyint(1) NULL DEFAULT 1 COMMENT '是否新品',
+    `is_sale` tinyint(1) NULL DEFAULT 1 COMMENT '是否上架',
     PRIMARY KEY (`product_id`) USING BTREE,
     UNIQUE INDEX `UNIQUE`(`product_no`) USING BTREE,
-    INDEX `product_type`(`product_type`) USING BTREE,
-    INDEX `product_brand`(`product_brand`) USING BTREE
+    INDEX `product_type`(`product_type`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
--- Table structure for product_brand
+-- Table structure for specs
 -- ----------------------------
-DROP TABLE IF EXISTS `product_brand`;
-CREATE TABLE `product_brand`  (
-  `brand_id` int(5) NOT NULL AUTO_INCREMENT COMMENT '品牌id',
-  `brand_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '品牌名称',
-  `brand_describe` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '品牌描述',
-  PRIMARY KEY (`brand_id`) USING BTREE,
-  UNIQUE INDEX `UNIQUE`(`brand_name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品品牌表' ROW_FORMAT = DYNAMIC;
+DROP TABLE IF EXISTS `specs`;
+CREATE TABLE `specs`  (
+      `specs_id` int(5) NOT NULL AUTO_INCREMENT COMMENT '规格id',
+      `product_id` int(10) NULL DEFAULT NULL COMMENT '所属商品Id',
+      `specs_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT null COMMENT '规格名字',
+      `specs_desc` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT null COMMENT '规格描述',
+      `specs_in_price` double NULL DEFAULT 0 COMMENT '进价',
+      `specs_price` decimal(10, 2) NULL DEFAULT 0 COMMENT '规格出售价格',
+      `specs_stock` int(5) NULL DEFAULT 0 COMMENT '规格库存',
+      `is_stockout` tinyint(1) NULL DEFAULT 0 COMMENT '是否缺货',
+      `specs_img` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '规格图片',
+      `specs_status` int(1) NULL default 1 COMMENT '规格状态',
+      `sale_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '上架时间',
+      PRIMARY KEY (`specs_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品规格表' ROW_FORMAT = DYNAMIC;
+
 
 -- ----------------------------
 -- Table structure for product_review
@@ -112,17 +112,6 @@ CREATE TABLE `product_review`  (
    INDEX `order_no`(`order_no`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品评价' ROW_FORMAT = DYNAMIC;
 
--- ----------------------------
--- Table structure for product_specs
--- ----------------------------
-DROP TABLE IF EXISTS `product_specs`;
-CREATE TABLE `product_specs`  (
-      `product_id` int(5) NOT NULL COMMENT '商品id',
-      `specs_id` int(5) NOT NULL COMMENT '规格id',
-      INDEX `product_id`(`product_id`) USING BTREE,
-      INDEX `specs_id`(`specs_id`) USING BTREE,
-      PRIMARY KEY (`specs_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品规格表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for product_type
@@ -233,18 +222,6 @@ CREATE TABLE `shopping_cart`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 
--- ----------------------------
--- Table structure for specs
--- ----------------------------
-DROP TABLE IF EXISTS `specs`;
-CREATE TABLE `specs`  (
-      `specs_id` int(5) NOT NULL AUTO_INCREMENT COMMENT '规格id',
-      `product_id` int(10) NULL DEFAULT NULL COMMENT '商品ID',
-      `specs_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '规格类型',
-      `product_type` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品类别',
-      PRIMARY KEY (`specs_id`) USING BTREE,
-      INDEX `product_type`(`product_type`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品规格表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for supplier
@@ -318,7 +295,7 @@ CREATE TABLE `store`  (
          PRIMARY KEY (`store_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '店铺表' ROW_FORMAT = DYNAMIC;
 
--- ----------------------------
+/*-- ----------------------------
 -- Event structure for product_event
 -- ----------------------------
 #该事件的作用是在每天的指定时间执行一系列操作
@@ -348,11 +325,11 @@ delimiter ;
 DROP TRIGGER IF EXISTS `order_delete`;
 delimiter ;;
 CREATE TRIGGER `order_delete` BEFORE DELETE ON `order` FOR EACH ROW BEGIN
-    UPDATE product SET product_stock = product_stock + old.pay_amount WHERE product_no = old.product_no;
+    UPDATE specs SET specs_stock = specs_stock + old.pay_amount WHERE product_no = old.product_no;
 END
 ;;
 delimiter ;
-
+*/
 -- ----------------------------
 -- Triggers structure for table user
 -- ----------------------------

@@ -1,22 +1,26 @@
 package com.brionac.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.brionac.entity.domain.Product;
 import com.brionac.entity.domain.Store;
 import com.brionac.entity.domain.User;
+import com.brionac.entity.requests.StoreUpdateRequest;
 import com.brionac.service.ProductService;
 import com.brionac.service.StoreService;
 import com.brionac.mapper.StoreMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import static com.brionac.common.common.STORE_SESSION_KEY;
-import static com.brionac.common.common.USER_SESSION_KEY;
+import static com.brionac.common.common.*;
+import static com.brionac.utils.commonUtil.getNullPropertyNames;
 
 /**
 * @author 亚修的小破机
@@ -24,6 +28,7 @@ import static com.brionac.common.common.USER_SESSION_KEY;
 * @createDate 2023-12-23 01:07:09
 */
 @Service
+@Slf4j
 public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store>
     implements StoreService{
 
@@ -59,6 +64,29 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store>
         Store store = (Store) request.getSession().getAttribute(STORE_SESSION_KEY);
         Page<Product> page = productService.page(new Page<Product>(), Wrappers.<Product>lambdaQuery().eq(Product::getStoreId, store.getStoreId()));
         return page;
+    }
+
+    @Override
+    public boolean storeDelete(String id, HttpServletRequest request) {
+        log.info("删除店铺id为:{}", id);
+        log.info("删除者为:{}", request.getSession().getAttribute(USER_SESSION_KEY));
+        return this.removeById(id);
+    }
+
+    @Override
+    public Store updateStoreInfo(StoreUpdateRequest storeUpdateRequest, HttpServletRequest request) {
+        // 获取当前登录的店铺
+        Store loginStore = (Store) request.getSession().getAttribute(STORE_SESSION_KEY);
+
+        if(ObjectUtil.isNull(loginStore)){
+            log.error("未获取到店铺信息: "+request.getRequestURL());
+            throw new RuntimeException("店铺未登录");
+        }
+        BeanUtil.copyProperties(storeUpdateRequest, loginStore,getNullPropertyNames(storeUpdateRequest));
+
+        this.updateById(loginStore);
+
+        return loginStore;
     }
 }
 

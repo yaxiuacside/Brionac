@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.brionac.entity.domain.Product;
 import com.brionac.entity.domain.Store;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.brionac.entity.requests.StoreUpdateRequest;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -36,4 +37,21 @@ public interface StoreService extends IService<Store> {
      * @return
      */
     Page<Product> productList(HttpServletRequest request);
+
+    /**
+     * 删除店铺
+     *
+     * @param id
+     * @param request
+     * @return
+     */
+    boolean storeDelete(String id, HttpServletRequest request);
+
+    /**
+     * 修改店铺信息
+     * @param storeUpdateRequest
+     * @param request
+     * @return
+     */
+    Store updateStoreInfo(StoreUpdateRequest storeUpdateRequest, HttpServletRequest request);
 }

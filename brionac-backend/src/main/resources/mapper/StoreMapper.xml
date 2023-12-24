@@ -5,21 +5,21 @@
 <mapper namespace="com.brionac.mapper.StoreMapper">
 
     <resultMap id="BaseResultMap" type="com.brionac.entity.domain.Store">
-            <id property="storeId" column="store_id" jdbcType="BIGINT"/>
-            <result property="userId" column="user_id" jdbcType="INTEGER"/>
-            <result property="selfOperated" column="self_operated" jdbcType="BIT"/>
-            <result property="storeDisable" column="store_disable" jdbcType="VARCHAR"/>
-            <result property="storeLogo" column="store_logo" jdbcType="VARCHAR"/>
-            <result property="storeName" column="store_name" jdbcType="VARCHAR"/>
-            <result property="storeAddressDetail" column="store_address_detail" jdbcType="VARCHAR"/>
-            <result property="storeAddressIdPath" column="store_address_id_path" jdbcType="VARCHAR"/>
-            <result property="storeAddressPath" column="store_address_path" jdbcType="VARCHAR"/>
-            <result property="storeDesc" column="store_desc" jdbcType="VARCHAR"/>
-            <result property="deliveryScore" column="delivery_score" jdbcType="DECIMAL"/>
-            <result property="descriptionScore" column="description_score" jdbcType="DECIMAL"/>
-            <result property="serviceScore" column="service_score" jdbcType="DECIMAL"/>
-            <result property="goodsNum" column="goods_num" jdbcType="INTEGER"/>
-            <result property="collectionNum" column="collection_num" jdbcType="INTEGER"/>
+        <id property="storeId" column="store_id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="selfOperated" column="self_operated" jdbcType="BIT"/>
+        <result property="storeDisable" column="store_disable" jdbcType="VARCHAR"/>
+        <result property="storeLogo" column="store_logo" jdbcType="VARCHAR"/>
+        <result property="storeName" column="store_name" jdbcType="VARCHAR"/>
+        <result property="storeAddressDetail" column="store_address_detail" jdbcType="VARCHAR"/>
+        <result property="storeAddressIdPath" column="store_address_id_path" jdbcType="VARCHAR"/>
+        <result property="storeAddressPath" column="store_address_path" jdbcType="VARCHAR"/>
+        <result property="storeDesc" column="store_desc" jdbcType="VARCHAR"/>
+        <result property="deliveryScore" column="delivery_score" jdbcType="DECIMAL"/>
+        <result property="descriptionScore" column="description_score" jdbcType="DECIMAL"/>
+        <result property="serviceScore" column="service_score" jdbcType="DECIMAL"/>
+        <result property="goodsNum" column="goods_num" jdbcType="INTEGER"/>
+        <result property="collectionNum" column="collection_num" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">

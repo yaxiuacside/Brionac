@@ -8,11 +8,20 @@
             <id property="specsId" column="specs_id" jdbcType="INTEGER"/>
             <result property="productId" column="product_id" jdbcType="INTEGER"/>
             <result property="specsName" column="specs_name" jdbcType="VARCHAR"/>
-            <result property="productType" column="product_type" jdbcType="VARCHAR"/>
+            <result property="specsDesc" column="specs_desc" jdbcType="VARCHAR"/>
+            <result property="specsInPrice" column="specs_in_price" jdbcType="DOUBLE"/>
+            <result property="specsPrice" column="specs_price" jdbcType="DECIMAL"/>
+            <result property="specsStock" column="specs_stock" jdbcType="INTEGER"/>
+            <result property="isStockout" column="is_stockout" jdbcType="TINYINT"/>
+            <result property="specsImg" column="specs_img" jdbcType="VARCHAR"/>
+            <result property="specsStatus" column="specs_status" jdbcType="INTEGER"/>
+            <result property="saleTime" column="sale_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         specs_id,product_id,specs_name,
-        product_type
+        specs_desc,specs_in_price,specs_price,
+        specs_stock,is_stockout,specs_img,
+        specs_status,sale_time
     </sql>
 </mapper>

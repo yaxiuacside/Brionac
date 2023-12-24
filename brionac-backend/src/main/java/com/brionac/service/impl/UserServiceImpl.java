@@ -117,10 +117,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean customerDelete(String id) {
+        //删除user_role表中的信息
         userRoleMapper.delete(Wrappers.<UserRole>lambdaQuery().eq(UserRole::getUserId, Integer.getInteger(id)));
 
-        // 删除用户
-        boolean result = removeById(id);
+        // 删除用户表中的数据
+        boolean result = this.removeById(id);
         return result;
     }
 

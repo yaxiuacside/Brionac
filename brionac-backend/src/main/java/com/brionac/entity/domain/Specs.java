@@ -4,8 +4,11 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import lombok.Data;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 商品规格表
@@ -21,67 +24,65 @@ public class Specs implements Serializable {
     private Integer specsId;
 
     /**
-     * 商品ID
+     * 所属商品Id
      */
     @TableField(value = "product_id")
     private Integer productId;
 
     /**
-     * 规格类型
+     * 规格名字
      */
     @TableField(value = "specs_name")
     private String specsName;
 
     /**
-     * 商品类别
+     * 规格描述
      */
-    @TableField(value = "product_type")
-    private String productType;
+    @TableField(value = "specs_desc")
+    private String specsDesc;
+
+    /**
+     * 进价
+     */
+    @TableField(value = "specs_in_price")
+    private Double specsInPrice;
+
+    /**
+     * 规格出售价格
+     */
+    @TableField(value = "specs_price")
+    private BigDecimal specsPrice;
+
+    /**
+     * 规格库存
+     */
+    @TableField(value = "specs_stock")
+    private Integer specsStock;
+
+    /**
+     * 是否缺货
+     */
+    @TableField(value = "is_stockout")
+    private Integer isStockout;
+
+    /**
+     * 规格图片
+     */
+    @TableField(value = "specs_img")
+    private String specsImg;
+
+    /**
+     * 规格状态
+     */
+    @TableField(value = "specs_status")
+    private Integer specsStatus;
+
+    /**
+     * 上架时间
+     */
+    @TableField(value = "sale_time")
+    private Date saleTime;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
-
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        Specs other = (Specs) that;
-        return (this.getSpecsId() == null ? other.getSpecsId() == null : this.getSpecsId().equals(other.getSpecsId()))
-            && (this.getProductId() == null ? other.getProductId() == null : this.getProductId().equals(other.getProductId()))
-            && (this.getSpecsName() == null ? other.getSpecsName() == null : this.getSpecsName().equals(other.getSpecsName()))
-            && (this.getProductType() == null ? other.getProductType() == null : this.getProductType().equals(other.getProductType()));
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getSpecsId() == null) ? 0 : getSpecsId().hashCode());
-        result = prime * result + ((getProductId() == null) ? 0 : getProductId().hashCode());
-        result = prime * result + ((getSpecsName() == null) ? 0 : getSpecsName().hashCode());
-        result = prime * result + ((getProductType() == null) ? 0 : getProductType().hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", specsId=").append(specsId);
-        sb.append(", productId=").append(productId);
-        sb.append(", specsName=").append(specsName);
-        sb.append(", productType=").append(productType);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
 }

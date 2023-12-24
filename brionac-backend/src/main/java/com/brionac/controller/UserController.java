@@ -53,7 +53,7 @@ public class UserController {
     //顾客管理
     @Operation(summary = "顾客列表",description = "查询出全部顾客",tags = "运行商顾客管理")
     @GetMapping("/customer/list")
-    public Result<PageResult> customerList(){
+    public Result<PageResult<?>> customerList(){
 
         Page<User> page = userService.customerList();
 
@@ -109,7 +109,5 @@ public class UserController {
         userService.updateBasicInfo(userUpdateRequest,request);
         return Result.success();
     }
-
-
 
 }
