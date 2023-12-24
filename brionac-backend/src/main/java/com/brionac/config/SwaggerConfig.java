@@ -7,17 +7,13 @@
 
 package com.brionac.config;
 
-import cn.hutool.core.util.RandomUtil;
-
+import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
-import org.springdoc.core.customizers.GlobalOpenApiCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /***
  * 创建Swagger配置
@@ -29,16 +25,21 @@ import java.util.Map;
 public class SwaggerConfig {
 
     @Bean
-    public OpenAPI customOpenAPI() {
+    public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
-                .info(new Info()
-                        .title("XXX用户系统API")
-                        .version("1.0")
-
-                        .description( "Knife4j集成springdoc-openapi示例")
-                        .termsOfService("http://doc.xiaominfo.com")
-                        .license(new License().name("Apache 2.0")
-                                .url("http://localhost:9090")));
+                // 接口文档标题
+                .info(new Info().title("Knife4j OpenApi 3")
+                        // 接口文档描述
+                        .description("Knife4j OpenApi 3 example application")
+                        // 接口文档版本
+                        .version("v1.0")
+                        // 开发者联系方式
+                        .contact(new Contact().name("Flying9001").url("https://github.com/Flying9001")))
+                .externalDocs(new ExternalDocumentation()
+                        // 额外补充说明
+                        .description("Github example code")
+                        // 额外补充链接
+                        .url("https://github.com/Flying9001/springBootDemo/demo-knife4j-openapi3"));
     }
 
 

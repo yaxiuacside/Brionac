@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import lombok.Data;
 
 /**
- * 
+ * 店铺表
  * @TableName store
  */
 @TableName(value ="store")

@@ -57,6 +57,7 @@ CREATE TABLE `order`  (
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product`  (
     `product_id` int(5) NOT NULL AUTO_INCREMENT COMMENT '商品id',
+    `store_id` int(5) NOT NULL COMMENT '店铺ID',
     `product_no` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品编号',
     `product_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品名称',
     `product_type_id` int(5) NULL DEFAULT NULL COMMENT '商品类别id',
@@ -220,6 +221,7 @@ CREATE TABLE `role`  (
 DROP TABLE IF EXISTS `shopping_cart`;
 CREATE TABLE `shopping_cart`  (
       `cart_id` int(8) NOT NULL AUTO_INCREMENT COMMENT '购物车id',
+      `user_id` int(5) NOT NULL COMMENT '用户id',
       `account_number` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户帐号',
       `product_id` int(5) NOT NULL COMMENT '商品id',
       `pay_amount` int(5) NOT NULL COMMENT '购买数量',
@@ -227,9 +229,7 @@ CREATE TABLE `shopping_cart`  (
       `product_specs` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品规格',
       PRIMARY KEY (`cart_id`) USING BTREE,
       INDEX `account_number`(`account_number`) USING BTREE,
-      INDEX `product_id`(`product_id`) USING BTREE,
-      CONSTRAINT `shopping_cart_ibfk_1` FOREIGN KEY (`account_number`) REFERENCES `user` (`account_number`) ON DELETE CASCADE ON UPDATE CASCADE,
-      CONSTRAINT `shopping_cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE
+      INDEX `product_id`(`product_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 
@@ -274,7 +274,7 @@ CREATE TABLE `user`  (
          `user_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户昵称',
          `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户密码',
          `user_sex` varchar(6) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户性别',
-         `telephone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户手机号',
+         `telephone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户手机号',
          `creat_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
          `user_state` tinyint(1) NOT NULL DEFAULT 1 COMMENT '用户状态',
          `summary` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '个人简介',
@@ -300,7 +300,7 @@ CREATE TABLE `user_role`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `store`;
 CREATE TABLE `store`  (
-         `store_id` bigint NOT NULL COMMENT 'ID',
+         `store_id` int(5) AUTO_INCREMENT NOT NULL COMMENT 'ID',
          `user_id` int(10) NULL DEFAULT NULL COMMENT '用户ID',
          `self_operated` bit(1) NOT NULL COMMENT '是否自营',
          `store_disable` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '店铺状态',
@@ -316,7 +316,7 @@ CREATE TABLE `store`  (
          `goods_num` int NULL DEFAULT NULL COMMENT '商品数量',
          `collection_num` int NULL DEFAULT NULL COMMENT '收藏数量',
          PRIMARY KEY (`store_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '店铺表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Event structure for product_event

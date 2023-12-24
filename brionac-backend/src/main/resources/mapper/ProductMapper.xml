@@ -6,6 +6,7 @@
 
     <resultMap id="BaseResultMap" type="com.brionac.entity.domain.Product">
             <id property="productId" column="product_id" jdbcType="INTEGER"/>
+            <result property="storeId" column="store_id" jdbcType="INTEGER"/>
             <result property="productNo" column="product_no" jdbcType="VARCHAR"/>
             <result property="productName" column="product_name" jdbcType="VARCHAR"/>
             <result property="productTypeId" column="product_type_id" jdbcType="INTEGER"/>
@@ -24,11 +25,11 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        product_id,product_no,product_name,
-        product_type_id,product_type,product_brand_id,
-        product_brand,in_price,out_price,
-        product_stock,lowest_stock,is_stockout,
-        is_new,is_sale,sale_time,
-        product_url
+        product_id,store_id,product_no,
+        product_name,product_type_id,product_type,
+        product_brand_id,product_brand,in_price,
+        out_price,product_stock,lowest_stock,
+        is_stockout,is_new,is_sale,
+        sale_time,product_url
     </sql>
 </mapper>

@@ -8,4 +8,8 @@ package com.brionac.common;
  */
 public interface common {
     String SALT = "brionac";
+
+    String USER_SESSION_KEY = "brionacUser";
+
+    String STORE_SESSION_KEY = "brionacStore";
 }
