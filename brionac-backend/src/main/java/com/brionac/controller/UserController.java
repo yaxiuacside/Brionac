@@ -11,6 +11,7 @@ import com.brionac.entity.requests.UserLoginRequest;
 import com.brionac.entity.requests.UserUpdateRequest;
 import com.brionac.service.UserService;
 import com.brionac.utils.PageResultUtil;
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import static com.brionac.common.common.USER_SESSION_KEY;
+import static com.brionac.common.Common.USER_SESSION_KEY;
 
 @RestController
 @RequestMapping("/user")
@@ -28,22 +29,21 @@ public class UserController {
     @Resource
     UserService userService;
 
-
-
-    @Operation(summary = "注册用户",description = "账号密码注册")
+    @ApiOperationSupport(order = 1)
+    @Operation(summary = "注册用户",description = "账号密码注册",tags = "登录注册退出")
     @PostMapping("/register")
     public Result<?> register(@RequestBody UserLoginRequest userLoginRequest){
         return userService.register(userLoginRequest) ? Result.success() : Result.error("401","用户名已经存在，请重新输入");
     }
 
-    @Operation(summary = "用户登录",description = "账号密码登录")
+    @Operation(summary = "用户登录",description = "账号密码登录",tags = "登录注册退出")
     @PostMapping("/login")
     public Result<?> login(@RequestBody UserLoginRequest userLoginRequest, HttpServletRequest request){
         User user = userService.login(userLoginRequest,request);
         return Result.success(user);
     }
 
-    @Operation(summary = "用户退出",description = "当前登录用户退出")
+    @Operation(summary = "用户退出",description = "当前登录用户退出",tags = "登录注册退出")
     @GetMapping("/logout")
     public Result<?> logout(HttpServletRequest request){
         request.getSession().removeAttribute(USER_SESSION_KEY);
@@ -51,6 +51,7 @@ public class UserController {
     }
 
     //顾客管理
+    @ApiOperationSupport(order = 3)
     @Operation(summary = "顾客列表",description = "查询出全部顾客",tags = "运行商顾客管理")
     @GetMapping("/customer/list")
     public Result<PageResult<?>> customerList(){
@@ -64,9 +65,10 @@ public class UserController {
 
     @Operation(summary = "顾客列表 - 过滤",description = "根据用户姓名过滤",tags = "运行商顾客管理")
     @GetMapping("/customer/list/filter")
-    public Result<PageResult<User>> findPage(@RequestParam(name = "当前页",defaultValue = "1") Integer pageNum,
-                              @RequestParam(name = "每页页数",defaultValue = "10") Integer pageSize,
-                              @RequestParam(name = "用户名",defaultValue = "") String userNameSearch) {
+    public Result<PageResult<User>> findPage(
+          @RequestParam(name = "当前页",defaultValue = "1") Integer pageNum,
+          @RequestParam(name = "每页页数",defaultValue = "10") Integer pageSize,
+          @RequestParam(name = "用户名",defaultValue = "") String userNameSearch) {
         //新建分页对象
         Page<User> page = new Page<>(pageNum, pageSize);
         //新建模糊查询对象,这里有个注意事项，你模糊项查询的对应项不能为null，为null就查不出来
@@ -97,6 +99,7 @@ public class UserController {
 
 
     //个人管理
+    @ApiOperationSupport(order = 2)
     @Operation(summary = "查询当前登录用户",description = "查询当前登录用户",tags = "个人管理")
     @GetMapping("/current")
     public Result<?> current(HttpServletRequest request){

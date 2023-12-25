@@ -9,7 +9,7 @@
             <result property="productId" column="product_id" jdbcType="INTEGER"/>
             <result property="specsName" column="specs_name" jdbcType="VARCHAR"/>
             <result property="specsDesc" column="specs_desc" jdbcType="VARCHAR"/>
-            <result property="specsInPrice" column="specs_in_price" jdbcType="DOUBLE"/>
+            <result property="specsInPrice" column="specs_in_price" jdbcType="DECIMAL"/>
             <result property="specsPrice" column="specs_price" jdbcType="DECIMAL"/>
             <result property="specsStock" column="specs_stock" jdbcType="INTEGER"/>
             <result property="isStockout" column="is_stockout" jdbcType="TINYINT"/>

@@ -4,10 +4,9 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.Date;
+import lombok.Data;
 
 /**
  * 商品表
@@ -51,6 +50,18 @@ public class Product implements Serializable {
      */
     @TableField(value = "product_type")
     private String productType;
+
+    /**
+     * 商品缩略图
+     */
+    @TableField(value = "thumbnail")
+    private String thumbnail;
+
+    /**
+     * 商品介绍图
+     */
+    @TableField(value = "intro_diagram")
+    private String introDiagram;
 
     /**
      * 流量热度

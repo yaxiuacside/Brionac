@@ -2,12 +2,11 @@ package com.brionac.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static com.brionac.common.common.USER_SESSION_KEY;
+import static com.brionac.common.Common.USER_SESSION_KEY;
 
 /**定义一个拦截器**/
 @Slf4j

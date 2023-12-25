@@ -16,6 +16,7 @@ import com.brionac.service.ProductService;
 import com.brionac.service.SpecsService;
 import com.brionac.service.StoreService;
 import com.brionac.utils.PageResultUtil;
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import static com.brionac.common.common.STORE_SESSION_KEY;
+import static com.brionac.common.Common.STORE_SESSION_KEY;
 
 /**
  * @author 亚修的小破机
@@ -46,6 +47,7 @@ public class StoreController {
     SpecsService specsService;
 
     //店铺管理
+    @ApiOperationSupport(order = 4)
     @Operation(summary = "店铺列表",description = "查询出全部店铺",tags = "运行商店铺管理")
     @GetMapping("/list")
     public Result<PageResult<Store>> storeList(){
@@ -55,8 +57,8 @@ public class StoreController {
 
     @Operation(summary = "店铺列表 - 过滤",description = "根据店铺名字过滤",tags = "运行商店铺管理")
     @GetMapping("/list/filter")
-    public Result<PageResult<Store>> findPage
-            (@RequestParam(name = "当前页",defaultValue = "1") Integer pageNum,
+    public Result<PageResult<Store>> findPage(
+            @RequestParam(name = "当前页",defaultValue = "1") Integer pageNum,
              @RequestParam(name = "每页页数",defaultValue = "10") Integer pageSize,
              @RequestParam(name = "storeNameSearch",defaultValue = "") String storeNameSearch)
     {
@@ -86,6 +88,8 @@ public class StoreController {
         return storeService.storeDelete(id,request) ? Result.success():Result.error("501","删除失败");
     }
 
+
+    @ApiOperationSupport(order = 8)
     @Operation(summary = "当前登录店铺信息",description = "当前登录店铺信息",tags = "店铺管理")
     @GetMapping("/current")
     public Result<Store> storeCurrent(HttpServletRequest request){
@@ -106,6 +110,7 @@ public class StoreController {
 
 
     //商品管理
+    @ApiOperationSupport(order = 9)
     @Operation(summary = "店铺商品显示",description = "显示自己店铺的商品",tags = "店铺 - 商品管理")
     @GetMapping("/product/list")
     public Result<PageResult<Product>> productList(HttpServletRequest request) {
@@ -115,12 +120,12 @@ public class StoreController {
         return Result.success(PageResultUtil.getPageResult(productPage));
     }
 
-    @Operation(summary = "店铺商品添加",description = "添加商品到自己的店铺",tags = "店铺 - 商品管理")
+    @Operation(summary = "店铺商品添加",description = "添加商品到自己的店铺, 商品第一次添加,填的的默认规格, 后续可以添加其他规格",tags = "店铺 - 商品管理")
     @PostMapping("/product/add")
     public Result<?> addProduct(
             @RequestBody
             ProductAddRequest request,
-            @SessionAttribute(value = STORE_SESSION_KEY,required = false)
+            @SessionAttribute(value = STORE_SESSION_KEY)
             @Parameter(hidden = true)
             Store store
     ) {
@@ -139,7 +144,22 @@ public class StoreController {
         return Result.success();
     }
 
-    @Operation(summary = "商品规格添加",description = "给商品添加新的规格",tags = "店铺 - 商品管理")
+    @ApiOperationSupport(order = 10)
+    @Operation(summary = "商品规格显示",description = "查看商品规格",tags = "店铺 - 商品 - 规格管理")
+    @Parameter(name = "productId",description = "商品id",in = ParameterIn.PATH)
+    @PostMapping("/product/specs/{productId}")
+    public Result<PageResult<?>> getSpecs(
+            @PathVariable("productId")
+            Integer productId
+    ) {
+
+        Page<Specs> page = specsService.page(new Page<>(), Wrappers.<Specs>lambdaQuery()
+                .eq(Specs::getProductId, productId));
+
+        return Result.success(PageResultUtil.getPageResult(page));
+    }
+
+    @Operation(summary = "商品规格添加",description = "给商品添加新的规格",tags = "店铺 - 商品 - 规格管理")
     @Parameter(name = "productId",description = "商品id",in = ParameterIn.PATH)
     @PostMapping("/product/addSpecs/{productId}")
     public Result<?> addSpecs(
@@ -155,4 +175,32 @@ public class StoreController {
         return Result.success();
     }
 
+    @Operation(summary = "商品规格修改",description = "修改商品规格",tags = "店铺 - 商品 - 规格管理")
+    @Parameter(name = "productId",description = "规格id",in = ParameterIn.PATH)
+    @PutMapping("/product/updateSpecs/{specsId}")
+    public Result<?> updateSpecs(
+            @PathVariable("specsId")
+            Integer specsId,
+            @RequestBody
+            SpecsAddRequest request
+    ) {
+        Specs specs = new Specs();
+        BeanUtil.copyProperties(request,specs);
+        specs.setSpecsId(specsId);
+        specsService.updateById(specs);
+        return Result.success();
+    }
+
+    @Operation(summary = "商品规格删除",description = "删除商品规格",tags = "店铺 - 商品 - 规格管理")
+    @Parameter(name = "productId",description = "规格id",in = ParameterIn.PATH)
+    @DeleteMapping("/product/deleteSpecs/{specsId}")
+    public Result<?> deleteSpecs(
+            @PathVariable("specsId")
+            Integer specsId
+    ){
+        return specsService.remove(Wrappers.<Specs>lambdaQuery().
+                eq(Specs::getSpecsId,specsId)) ? Result.success() : Result.error("500","删除失败");
+    }
+
+    //商品管理end
 }

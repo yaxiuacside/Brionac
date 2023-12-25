@@ -45,7 +45,7 @@ public class Specs implements Serializable {
      * 进价
      */
     @TableField(value = "specs_in_price")
-    private Double specsInPrice;
+    private BigDecimal specsInPrice;
 
     /**
      * 规格出售价格

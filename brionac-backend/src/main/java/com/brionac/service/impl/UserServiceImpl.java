@@ -14,7 +14,6 @@ import com.brionac.entity.requests.UserUpdateRequest;
 import com.brionac.mapper.UserRoleMapper;
 import com.brionac.service.RoleService;
 import com.brionac.service.StoreService;
-import com.brionac.service.UserRoleService;
 import com.brionac.service.UserService;
 import com.brionac.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -25,8 +24,8 @@ import org.springframework.util.DigestUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static com.brionac.common.common.*;
-import static com.brionac.utils.commonUtil.getNullPropertyNames;
+import static com.brionac.common.Common.*;
+import static com.brionac.utils.CommonUtil.getNullPropertyNames;
 
 /**
 * @author 亚修的小破机

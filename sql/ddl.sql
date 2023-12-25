@@ -25,26 +25,26 @@ CREATE TABLE `logistics`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '物流表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
--- Table structure for order
+-- Table structure for brionacOrder
 -- ----------------------------
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE `order`  (
+DROP TABLE IF EXISTS `brionac_order`;
+CREATE TABLE `brionac_order`  (
           `order_id` int(7) NOT NULL AUTO_INCREMENT COMMENT '订单id',
-          `order_no` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单编号',
+          `order_no` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '订单编号',
           `order_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '下单时间',
           `product_id` int(10) NULL DEFAULT NULL COMMENT '商品ID',
-          `product_no` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品编号',
+          `product_no` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品编号',
           `product_specs` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品规格',
           `user_id` int(10) NULL DEFAULT NULL COMMENT '用户ID',
-          `user_account` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户账号',
-          `user_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名称',
-          `contact_way` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '联系方式',
-          `pay_price` double NOT NULL COMMENT '商品金额',
-          `pay_amount` int(6) NOT NULL COMMENT '购买数量',
-          `pay_type` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '支付方式',
-          `order_state` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单状态',
-          `accept_address` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '收货地址',
-          `return_state` tinyint(1) NOT NULL DEFAULT 0 COMMENT '退货状态',
+          `user_account` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户账号',
+          `user_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名称',
+          `contact_way` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '联系方式',
+          `pay_price` decimal(10, 2) NULL DEFAULT 0 COMMENT '商品金额',
+          `pay_amount` int(6) NULL DEFAULT 0 COMMENT '购买数量',
+          `pay_type` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '支付方式',
+          `order_state` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 0 COMMENT '订单状态',
+          `accept_address` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '收货地址',
+          `return_state` tinyint(1) NULL DEFAULT 0 COMMENT '退货状态',
           PRIMARY KEY (`order_id`) USING BTREE,
           UNIQUE INDEX `UNIQUE`(`order_no`) USING BTREE,
           INDEX `product_no`(`product_no`) USING BTREE,
@@ -62,6 +62,8 @@ CREATE TABLE `product`  (
     `product_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT null COMMENT '商品名称',
     `product_type_id` int(5) NULL DEFAULT NULL COMMENT '商品类别id',
     `product_type` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT null COMMENT '商品类别',
+    `thumbnail` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品缩略图',
+    `intro_diagram` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品介绍图',
     `traffic` bigint NULL default 0 comment '流量热度',
     `sale_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '上架时间',
     `is_new` tinyint(1) NULL DEFAULT 1 COMMENT '是否新品',
@@ -80,7 +82,7 @@ CREATE TABLE `specs`  (
       `product_id` int(10) NULL DEFAULT NULL COMMENT '所属商品Id',
       `specs_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT null COMMENT '规格名字',
       `specs_desc` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT null COMMENT '规格描述',
-      `specs_in_price` double NULL DEFAULT 0 COMMENT '进价',
+      `specs_in_price` decimal(10, 2) NULL DEFAULT 0 COMMENT '进价',
       `specs_price` decimal(10, 2) NULL DEFAULT 0 COMMENT '规格出售价格',
       `specs_stock` int(5) NULL DEFAULT 0 COMMENT '规格库存',
       `is_stockout` tinyint(1) NULL DEFAULT 0 COMMENT '是否缺货',
@@ -162,16 +164,16 @@ CREATE TABLE `return_goods`  (
      `return_id` int(5) NOT NULL AUTO_INCREMENT COMMENT '退货id',
      `apply_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '申请时间',
      `order_id` int(10) NULL DEFAULT NULL COMMENT '订单ID',
-     `order_no` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单编号',
-     `user_number` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户账号',
-     `user_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名称',
-     `return_price` double NOT NULL COMMENT '退款金额',
-     `operator_number` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '操作员账号',
-     `operator_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '操作员名称',
+     `order_no` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '订单编号',
+     `user_number` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户账号',
+     `user_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名称',
+     `return_price` double NULL DEFAULT NULL COMMENT '退款金额',
+     `operator_number` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '操作员账号',
+     `operator_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '操作员名称',
      `deal_time` timestamp NULL DEFAULT NULL COMMENT '处理时间',
      `reason_id` int(10) NULL DEFAULT NULL COMMENT '退货原因ID',
      `return_reason` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '退货原因',
-     `return_state` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '退货状态',
+     `return_state` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '退货状态',
      PRIMARY KEY (`return_id`) USING BTREE,
      INDEX `user_name`(`user_name`) USING BTREE,
      INDEX `return_goods_ibfk_3`(`operator_number`) USING BTREE,
@@ -186,7 +188,7 @@ CREATE TABLE `return_goods`  (
 DROP TABLE IF EXISTS `return_reason`;
 CREATE TABLE `return_reason`  (
       `reason_id` int(5) NOT NULL AUTO_INCREMENT COMMENT '退货id',
-      `reason_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '退货理由',
+      `reason_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '退货理由',
       `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '是否启用',
       PRIMARY KEY (`reason_id`) USING BTREE,
       UNIQUE INDEX `UNIQUE`(`reason_name`) USING BTREE
@@ -213,13 +215,17 @@ CREATE TABLE `shopping_cart`  (
       `user_id` int(5) NOT NULL COMMENT '用户id',
       `account_number` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户帐号',
       `product_id` int(5) NOT NULL COMMENT '商品id',
+      `product_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品名称',
       `pay_amount` int(5) NOT NULL COMMENT '购买数量',
       `specs_id` int(10) NULL DEFAULT NULL COMMENT '商品规格ID',
+      `specs_img` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '规格图片',
       `product_specs` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品规格',
+      `specs_price` decimal(10, 2) NULL DEFAULT 0 COMMENT '该商品应付价钱',
+      `state` tinyint(1) NOT NULL DEFAULT 0 COMMENT '支付状态',
       PRIMARY KEY (`cart_id`) USING BTREE,
       INDEX `account_number`(`account_number`) USING BTREE,
       INDEX `product_id`(`product_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '购物车表' ROW_FORMAT = DYNAMIC;
 
 
 
@@ -312,19 +318,19 @@ DO BEGIN
 
 UPDATE product SET is_new = 0 WHERE sale_time<(CURRENT_TIMESTAMP() + INTERVAL -15 DAY);#修改15天前的新品数据
 
-DELETE FROM `order` WHERE order_time < DATE_SUB(CURDATE(),INTERVAL 1 DAY) AND order_state='待付款';	#清除24小时内未付款的订单信息
+DELETE FROM `brionacOrder` WHERE order_time < DATE_SUB(CURDATE(),INTERVAL 1 DAY) AND order_state='待付款';	#清除24小时内未付款的订单信息
 
 END
 ;;
 delimiter ;
 
 -- ----------------------------
--- Triggers structure for table order
+-- Triggers structure for table brionacOrder
 -- ----------------------------
 # 订单删除触发器
 DROP TRIGGER IF EXISTS `order_delete`;
 delimiter ;;
-CREATE TRIGGER `order_delete` BEFORE DELETE ON `order` FOR EACH ROW BEGIN
+CREATE TRIGGER `order_delete` BEFORE DELETE ON `brionacOrder` FOR EACH ROW BEGIN
     UPDATE specs SET specs_stock = specs_stock + old.pay_amount WHERE product_no = old.product_no;
 END
 ;;

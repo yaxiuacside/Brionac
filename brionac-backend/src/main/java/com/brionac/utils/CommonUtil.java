@@ -1,11 +1,15 @@
 package com.brionac.utils;
 
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.ObjectUtil;
+import com.google.common.collect.Lists;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 
 import java.beans.PropertyDescriptor;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -14,7 +18,7 @@ import java.util.Set;
  * ClassName: commonUtil
  * date: 2023/12/24
  */
-public class commonUtil {
+public class CommonUtil {
 
     //获取值为空的属性
     public static String[] getNullPropertyNames(Object source) {
@@ -33,5 +37,28 @@ public class commonUtil {
 
         String[] result = new String[emptyNames.size()];
         return emptyNames.toArray(result);
+    }
+
+    /**
+     *
+     * @param input 输入集合
+     * @param clzz 输出类型
+     * @return
+     * @param <E> 入参类型
+     * @param <T> 出参类型
+     */
+    public static <E, T> List<T> convertList2List(List<E> input, Class<T> clzz) {
+        List<T> output = Lists.newArrayList();
+        if (!CollectionUtil.isEmpty(input)) {
+            for (E source : input) {
+                T target = BeanUtils.instantiate(clzz);
+                BeanUtils.copyProperties(source, target);
+                output.add(target);
+            }
+        }
+
+
+        return output;
+
     }
 }

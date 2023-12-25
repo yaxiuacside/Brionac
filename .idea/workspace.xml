@@ -4,39 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa08be1d-2d5e-4b0e-8b11-887a24059cee" name="Changes" comment="更改springboot版本为2.7.1, 完成一部分功能">
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/ProductAddRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/SpecsAddRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/StoreUpdateRequest.java" afterDir="false" />
+    <list default="true" id="aa08be1d-2d5e-4b0e-8b11-887a24059cee" name="Changes" comment="更改springboot版本为2.7.1, 完成一部分功能, 数据库有所改动">
+      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/common/OrderState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/AddShoppingCartRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/ProductEvaluateRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/vos/CustomerSpecsVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/vos/ProductDetailVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/vos/ShoppingCartVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/vos/StoreOrderVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/BrionacOrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/BrionacOrderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/mybatisx/templates.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mybatisx/templates.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/common/common.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/common/Common.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/StoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/StoreController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/domain/BrionacOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/domain/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/domain/ProductBrand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/domain/ProductSpecs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/domain/ShoppingCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/domain/ShoppingCart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/domain/Specs.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/domain/Specs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/domain/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/domain/Store.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/SpecsAddRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/SpecsAddRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/interceptor/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/interceptor/LoginInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/mapper/ProductBrandMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/mapper/ProductSpecsMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/ProductBrandService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/mapper/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/mapper/BrionacOrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/mapper/ShoppingCartMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/mapper/ShoppingCartMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/ProductReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/ProductReviewService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/ProductSpecsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/StoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/StoreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/ProductBrandServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/ShoppingCartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/ShoppingCartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/OrderServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/ProductReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/ProductReviewServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/ProductSpecsServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/ShoppingCartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/ShoppingCartServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/StoreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/StoreServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/resources/mapper/ProductBrandMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/utils/PageResultUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/utils/PageResultUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/utils/commonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/utils/CommonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/resources/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/resources/mapper/BrionacOrderMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/resources/mapper/ProductMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/resources/mapper/ProductMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/resources/mapper/ProductSpecsMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/resources/mapper/ShoppingCartMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/resources/mapper/ShoppingCartMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/resources/mapper/SpecsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/resources/mapper/SpecsMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/resources/mapper/StoreMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/resources/mapper/StoreMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sql/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/ddl.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/dml.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/dml.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +56,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -149,6 +159,8 @@
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.brionac.entity.requests" />
+      <recent name="com.brionac.entity.vos" />
+      <recent name="com.brionac.entity.domain" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -219,7 +231,7 @@
       <workItem from="1703261955009" duration="12668000" />
       <workItem from="1703348943448" duration="4652000" />
       <workItem from="1703398467161" duration="19308000" />
-      <workItem from="1703433109593" duration="5860000" />
+      <workItem from="1703433109593" duration="35030000" />
     </task>
     <task id="LOCAL-00001" summary="更改springboot版本为2.7.1, 完成一部分功能">
       <option name="closed" value="true" />
@@ -229,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703410744823</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="更改springboot版本为2.7.1, 完成一部分功能, 数据库有所改动">
+      <option name="closed" value="true" />
+      <created>1703439284697</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703439284697</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,29 +268,25 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="更改springboot版本为2.7.1, 完成一部分功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="更改springboot版本为2.7.1, 完成一部分功能" />
+    <MESSAGE value="更改springboot版本为2.7.1, 完成一部分功能, 数据库有所改动" />
+    <option name="LAST_COMMIT_MESSAGE" value="更改springboot版本为2.7.1, 完成一部分功能, 数据库有所改动" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/UserServiceImpl.java</url>
-          <line>101</line>
+          <line>100</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/utils/commonUtil.java</url>
-          <line>21</line>
+          <url>file://$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/utils/CommonUtil.java</url>
+          <line>26</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/utils/commonUtil.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/UserServiceImpl.java</url>
-          <line>136</line>
+          <line>135</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -279,9 +295,14 @@
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/StoreServiceImpl.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="18" />
+          <url>file://$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/BrionacOrderServiceImpl.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/BrionacOrderServiceImpl.java</url>
+          <line>79</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

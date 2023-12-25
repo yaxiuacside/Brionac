@@ -19,8 +19,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import static com.brionac.common.common.*;
-import static com.brionac.utils.commonUtil.getNullPropertyNames;
+import static com.brionac.common.Common.*;
+import static com.brionac.utils.CommonUtil.getNullPropertyNames;
 
 /**
 * @author 亚修的小破机

@@ -6,15 +6,29 @@
 
     <resultMap id="BaseResultMap" type="com.brionac.entity.domain.ShoppingCart">
             <id property="cartId" column="cart_id" jdbcType="INTEGER"/>
+            <result property="userId" column="user_id" jdbcType="INTEGER"/>
             <result property="accountNumber" column="account_number" jdbcType="VARCHAR"/>
             <result property="productId" column="product_id" jdbcType="INTEGER"/>
+            <result property="productName" column="product_name" jdbcType="VARCHAR"/>
             <result property="payAmount" column="pay_amount" jdbcType="INTEGER"/>
             <result property="specsId" column="specs_id" jdbcType="INTEGER"/>
+            <result property="specsImg" column="specs_img" jdbcType="VARCHAR"/>
             <result property="productSpecs" column="product_specs" jdbcType="VARCHAR"/>
+            <result property="specsPrice" column="specs_price" jdbcType="DECIMAL"/>
+            <result property="state" column="state" jdbcType="TINYINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        cart_id,account_number,product_id,
-        pay_amount,specs_id,product_specs
+        cart_id,user_id,account_number,
+        product_id,product_name,pay_amount,
+        specs_id,specs_img,product_specs,
+        specs_price,state
     </sql>
+
+    <select id="getCart" resultType="com.brionac.entity.domain.ShoppingCart">
+        SELECT cart_id, user_id, account_number, product_id, product_name, SUM(pay_amount) AS pay_amount, specs_id, specs_img, product_specs, SUM(specs_price) 	AS specs_price, state
+        FROM shopping_cart
+        WHERE user_id =  #{userId}
+        GROUP BY specs_id, state
+    </select>
 </mapper>
