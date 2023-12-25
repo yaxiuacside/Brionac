@@ -14,7 +14,7 @@ import java.util.Date;
  * 商品评价VO
  * @TableName product_review
  */
-@Schema(name = "添加购物车request",description = "添加购物车request")
+@Schema(name = "商品评价VO",description = "商品评价VO")
 @Data
 public class ProductEvaluateRequest{
 

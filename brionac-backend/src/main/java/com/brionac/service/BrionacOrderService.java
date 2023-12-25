@@ -5,6 +5,7 @@ import com.brionac.entity.domain.BrionacOrder;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.brionac.entity.domain.Store;
 import com.brionac.entity.domain.User;
+import com.brionac.entity.requests.StoreDeliverRequest;
 import com.brionac.entity.vos.StoreOrderVO;
 
 import java.util.List;
@@ -31,4 +32,12 @@ public interface BrionacOrderService extends IService<BrionacOrder> {
      * @return
      */
     Page<StoreOrderVO> getStoreOrder(Store store);
+
+    /**
+     * 商家发货
+     * @param orderId
+     * @param store
+     * @return
+     */
+    boolean deliver(StoreDeliverRequest orderId, Store store);
 }

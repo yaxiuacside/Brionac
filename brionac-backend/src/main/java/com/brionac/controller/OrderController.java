@@ -9,6 +9,7 @@ import com.brionac.entity.domain.ShoppingCart;
 import com.brionac.entity.domain.Store;
 import com.brionac.entity.domain.User;
 import com.brionac.entity.requests.AddShoppingCartRequest;
+import com.brionac.entity.requests.StoreDeliverRequest;
 import com.brionac.entity.vos.StoreOrderVO;
 import com.brionac.service.BrionacOrderService;
 import com.brionac.service.ShoppingCartService;
@@ -16,6 +17,7 @@ import com.brionac.utils.PageResultUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -113,11 +115,12 @@ public class OrderController {
     @Operation(summary = "取消订单",description = "取消订单",tags = "顾客 - 订单管理")
     @DeleteMapping ("/customer/order")
     public Result<?> orderDelete(
+            @RequestParam
+            Integer orderId,
             @SessionAttribute(value = USER_SESSION_KEY)
             @Parameter(hidden = true)
-            User user,
-            @RequestParam
-            Integer orderId
+            User user
+
     ){
         return brionacOrderService.removeById(orderId) ? Result.success():Result.error("501"," 修改购物车失败");
     }
@@ -132,5 +135,18 @@ public class OrderController {
     ){
         Page<StoreOrderVO> page = brionacOrderService.getStoreOrder(store);
         return Result.success(PageResultUtil.getPageResult(page));
+    }
+
+    @ApiOperationSupport(order = 7)
+    @Operation(summary = "商家发货",description = "商家发货",tags = "店铺 - 订单管理")
+    @GetMapping ("/store/deliver")
+    public Result<?> deliver(
+            @RequestBody
+            StoreDeliverRequest request,
+            @SessionAttribute(value = STORE_SESSION_KEY)
+            @Parameter(hidden = true)
+            Store store
+    ){
+        return brionacOrderService.deliver(request,store) ? Result.success() : Result.error("501"," 发货失败");
     }
 }

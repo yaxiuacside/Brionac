@@ -119,7 +119,7 @@ public class CustomerController {
         ) ? Result.success() : Result.error("501","确认收货失败");
     }
 
-    @Operation(summary = "商品评价",description = "商品评价",tags = "顾客 - 订单管理")
+    @Operation(summary = "评价商品",description = "评价商品",tags = "顾客 - 订单管理")
     @PostMapping("/evaluate")
     public Result<?> evaluate(
             @RequestBody

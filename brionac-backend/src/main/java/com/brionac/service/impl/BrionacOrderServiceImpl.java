@@ -1,16 +1,14 @@
 package com.brionac.service.impl;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.brionac.entity.domain.*;
+import com.brionac.entity.requests.StoreDeliverRequest;
 import com.brionac.entity.vos.StoreOrderVO;
-import com.brionac.service.BrionacOrderService;
+import com.brionac.service.*;
 import com.brionac.mapper.BrionacOrderMapper;
-import com.brionac.service.ProductService;
-import com.brionac.service.ShoppingCartService;
-import com.brionac.service.SpecsService;
 import com.brionac.utils.CommonUtil;
 import com.brionac.utils.PageResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +36,11 @@ public class BrionacOrderServiceImpl extends ServiceImpl<BrionacOrderMapper, Bri
 
     @Autowired
     ShoppingCartService shoppingCartService;
+    @Autowired
+    UserService userService;
+    @Autowired
+    LogisticsService logisticsService;
+
 
     Integer orderNo = 100;
 
@@ -88,6 +91,30 @@ public class BrionacOrderServiceImpl extends ServiceImpl<BrionacOrderMapper, Bri
         Page<StoreOrderVO> resultPage = PageResultUtil.listToPage(storeOrderVOS, 1, 10);
 
         return resultPage;
+    }
+
+    @Override
+    public boolean deliver(StoreDeliverRequest request, Store store) {
+
+        //根据订单id查到订单
+        BrionacOrder brionacOrder = this.getById(request.getOrderId());
+
+        //查出收货人信息
+        User user = userService.getById(brionacOrder.getUserId());
+
+        Logistics logistics = new Logistics();
+
+        //属性拷贝
+        BeanUtil.copyProperties(request, logistics);
+
+        //赋值
+        logistics.setSender(store.getStoreName());
+        logistics.setSenderAdd(store.getStoreAddressDetail());
+        logistics.setReceiver(user.getUserName());
+        logistics.setReceiverTel(user.getTelephone());
+        logistics.setReceiverAdd(user.getUserAddress());
+
+        return logisticsService.save(logistics);
     }
 }
 
