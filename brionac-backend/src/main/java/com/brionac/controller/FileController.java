@@ -45,6 +45,7 @@ public class FileController {
         // 返回文件的URL
         return Result.success(ip + ":" + port + "/files/" + fileName);
     }
+
     @Operation(summary = "预览图片",description = "前端使用src标签绑定一个图片的时候就会使用到Get方法预览到网页上",tags = "文件管理")
     @Parameter(name = "fileName",description = "文件名",in = ParameterIn.PATH)
     @GetMapping("/{fileName}")
