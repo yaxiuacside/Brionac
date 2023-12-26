@@ -1,0 +1,115 @@
+version: '3' #指定 Docker Compose 文件格式的版本号
+services:
+  gateway:
+    container_name: gateway
+    build:
+      context: ./gateway  # 网关服务的 Dockerfile 所在的路径
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"  # 将主机的 8080 端口映射到网关服务的 8080 端口
+    networks:
+      - party-building-network
+  service-active:
+    container_name: service-active
+    build:
+      context: ./service/service-active  # 网关服务的 Dockerfile 所在的路径
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"  # 将主机的 8080 端口映射到网关服务的 8080 端口
+    networks:
+      - party-building-network
+    depends_on:
+      - gateway
+  service-data:
+    container_name: service-data
+    build:
+      context: ./service/service-data  # 网关服务的 Dockerfile 所在的路径
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"  # 将主机的 8080 端口映射到网关服务的 8080 端口
+    networks:
+      - party-building-network
+    depends_on:
+      - gateway
+
+  service-file:
+    container_name: service-file
+    build:
+      context: ./service/service-file  # 网关服务的 Dockerfile 所在的路径
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8003"  # 将主机的 8080 端口映射到网关服务的 8080 端口
+    networks:
+      - party-building-network
+    depends_on:
+      - gateway
+  service-identity:
+    container_name: service-identity
+    build:
+      context: ./service/service-identity  # 网关服务的 Dockerfile 所在的路径
+      dockerfile: Dockerfile
+    ports:
+      - "8004:8004"  # 将主机的 8080 端口映射到网关服务的 8080 端口
+    networks:
+      - party-building-network
+    depends_on:
+      - gateway
+
+  service-permission:
+    container_name: service-permission
+    build:
+      context: ./service/service-permission  # 网关服务的 Dockerfile 所在的路径
+      dockerfile: Dockerfile
+    ports:
+      - "8005:8005"  # 将主机的 8080 端口映射到网关服务的 8080 端口
+    networks:
+      - party-building-network
+    depends_on:
+      - gateway
+  service-personage:
+    container_name: service-personage
+    build:
+      context: ./service/service-personage  # 网关服务的 Dockerfile 所在的路径
+      dockerfile: Dockerfile
+    ports:
+      - "8006:8006"  # 将主机的 8080 端口映射到网关服务的 8080 端口
+    networks:
+      - party-building-network
+    depends_on:
+      - gateway
+  service-point:
+    container_name: service-point
+    build:
+      context: ./service/service-point  # 网关服务的 Dockerfile 所在的路径
+      dockerfile: Dockerfile
+    ports:
+      - "8007:8007"  # 将主机的 8080 端口映射到网关服务的 8080 端口
+    networks:
+      - party-building-network
+    depends_on:
+      - gateway
+  service-visualization:
+    container_name: service-visualization
+    build:
+      context: ./service/service-visualization  # 网关服务的 Dockerfile 所在的路径
+      dockerfile: Dockerfile
+    ports:
+      - "8008:8008"  # 将主机的 8080 端口映射到网关服务的 8080 端口
+    networks:
+      - party-building-network
+    depends_on:
+      - gateway
+  service-volunteer:
+    container_name: service-volunteer
+    build:
+      context: ./service/service-volunteer  # 网关服务的 Dockerfile 所在的路径
+      dockerfile: Dockerfile
+    ports:
+      - "8009:8009"  # 将主机的 8080 端口映射到网关服务的 8080 端口
+    networks:
+      - party-building-network
+    depends_on:
+      - gateway
+
+networks:
+  party-building-network:
