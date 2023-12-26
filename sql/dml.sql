@@ -1,5 +1,5 @@
--- Records of role
--- ----------------------------
+
+USE `brionac`;
 INSERT INTO `role` VALUES (1, '开发人员', '开发人员', 1);
 INSERT INTO `role` VALUES (2, '运营商', '运营商', 1);
 INSERT INTO `role` VALUES (3, '店铺', '店铺', 1);

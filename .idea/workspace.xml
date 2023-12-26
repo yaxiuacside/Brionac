@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa08be1d-2d5e-4b0e-8b11-887a24059cee" name="Changes" comment="完善结构, 文件上传功能完成">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/ProductEvaluateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/ProductEvaluateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/StoreDeliverRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/StoreDeliverRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/brionac-backend/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/dml.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/dml.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,42 +76,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "v1",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "D:/桌面/作业/大三上/Web/课设/Brionac/brionac-backend/src/main/java/com/brionac/entity/domain",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "spring.configuration.checksum": "92290bb5a1059b57ef9ca835f9469696",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;v1&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/桌面/作业/大三上/Web/课设/Brionac/brionac-backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;92290bb5a1059b57ef9ca835f9469696&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "RunConfigurationTargetLRU": [
-      "8ff73093-72f9-4ab8-a80b-c178869295e6/schema/\"brionac\""
+    &quot;RunConfigurationTargetLRU&quot;: [
+      &quot;8ff73093-72f9-4ab8-a80b-c178869295e6/schema/\&quot;brionac\&quot;&quot;,
+      &quot;f5ac9b9f-e183-40ad-bdbc-25e0244fbdb6&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\桌面\作业\大三上\Web\课设\Brionac\brionac-backend" />
+      <recent name="D:\桌面\作业\大三上\Web\课设\Brionac\docker" />
       <recent name="D:\桌面\作业\大三上\Web\课设\Brionac\brionac-backend\src\main\java\com\brionac\entity\domain" />
       <recent name="D:\桌面\作业\大三上\Web\课设\Brionac\brionac-backend\src\main\resources" />
     </key>
@@ -135,7 +138,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Docker.docker/docker-compose.env.yml: Compose Deployment">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.brionac.App" />
       <module name="brionac-backend" />
@@ -152,13 +155,13 @@
     <configuration name="ddl.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/sql/ddl.sql" />
       <script-mode>FILE</script-mode>
-      <data-source id="8ff73093-72f9-4ab8-a80b-c178869295e6" namespace="schema/&quot;brionac&quot;" />
+      <data-source id="f5ac9b9f-e183-40ad-bdbc-25e0244fbdb6" />
       <method v="2" />
     </configuration>
     <configuration name="dml.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/sql/dml.sql" />
       <script-mode>FILE</script-mode>
-      <data-source id="8ff73093-72f9-4ab8-a80b-c178869295e6" namespace="schema/&quot;brionac&quot;" />
+      <data-source id="f5ac9b9f-e183-40ad-bdbc-25e0244fbdb6" />
       <method v="2" />
     </configuration>
     <configuration name="App" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
@@ -174,8 +177,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker/docker-compose.env.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker/docker-compose.env.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.docker/docker-compose.env.yml: Compose Deployment" />
         <item itemvalue="Application.App" />
         <item itemvalue="Database Script.dml.sql" />
         <item itemvalue="Database Script.ddl.sql" />
@@ -196,7 +214,7 @@
       <workItem from="1703261955009" duration="12668000" />
       <workItem from="1703348943448" duration="4652000" />
       <workItem from="1703398467161" duration="19308000" />
-      <workItem from="1703433109593" duration="42244000" />
+      <workItem from="1703433109593" duration="46686000" />
     </task>
     <task id="LOCAL-00001" summary="更改springboot版本为2.7.1, 完成一部分功能">
       <option name="closed" value="true" />
@@ -238,7 +256,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703571708065</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="完善结构, 文件上传功能完成">
+      <option name="closed" value="true" />
+      <created>1703572539060</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1703572539060</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
