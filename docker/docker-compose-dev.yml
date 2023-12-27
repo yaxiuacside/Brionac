@@ -1,12 +1,12 @@
 version: '3'
 services:
   mysql:
-    image: mysql:5.7
+    image: mysql:8.0.35
     restart: always
     container_name: brionac-mysql
     command: --character-set-server=utf8 --collation-server=utf8_general_ci
     environment:
-      MYSQL_ROOT_PASSWORD:
+      MYSQL_ROOT_PASSWORD: 123456
     ports:
       - 3306:3306
     volumes:
@@ -14,10 +14,8 @@ services:
       - D:\Temp\mydata\mysql\conf:/etc/mysql/conf.d #启动脚本
   brionac-backend:
     container_name: brionac-backend
-    build:
-      context: ..\brionac-backend\Dockerfile  # 与当前docker-compose文件相对的服务的 Dockerfile 所在的路径
-      dockerfile: Dockerfile
+    build: ../brionac-backend
     ports:
-      - "9090:9090"  # 将主机的 8080 端口映射到网关服务的 8080 端口
+      - "9090:9091"  # 将主机的 8080 端口映射到网关服务的 8080 端口
     depends_on:
       - mysql

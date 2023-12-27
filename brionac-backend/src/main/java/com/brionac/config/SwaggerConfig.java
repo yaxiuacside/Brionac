@@ -15,11 +15,8 @@ import io.swagger.v3.oas.models.info.License;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/***
- * 创建Swagger配置
- * @since:knife4j-springdoc-openapi-demo 1.0
- * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
- * 2020/03/15 20:40
+/**
+ *  knife4j配置类
  */
 @Configuration
 public class SwaggerConfig {
@@ -28,13 +25,13 @@ public class SwaggerConfig {
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
                 // 接口文档标题
-                .info(new Info().title("Knife4j OpenApi 3")
+                .info(new Info().title("Brionac商城")
                         // 接口文档描述
-                        .description("Knife4j OpenApi 3 example application")
+                        .description("Brionac商城接口文档")
                         // 接口文档版本
                         .version("v1.0")
                         // 开发者联系方式
-                        .contact(new Contact().name("Flying9001").url("https://github.com/Flying9001")))
+                        .contact(new Contact().name("lbd").url("https://github.com/Flying9001")))
                 .externalDocs(new ExternalDocumentation()
                         // 额外补充说明
                         .description("Github example code")
