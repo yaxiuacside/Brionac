@@ -1,4 +1,4 @@
-package com.brionac.common;
+package com.brionac.constants;
 
 /**
  * @author 亚修的小破机

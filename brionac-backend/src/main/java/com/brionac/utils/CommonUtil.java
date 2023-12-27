@@ -2,14 +2,17 @@ package com.brionac.utils;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.ObjectUtil;
-import com.google.common.collect.Lists;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
+import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 import java.beans.PropertyDescriptor;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 
 /**
@@ -48,7 +51,7 @@ public class CommonUtil {
      * @param <T> 出参类型
      */
     public static <E, T> List<T> convertList2List(List<E> input, Class<T> clzz) {
-        List<T> output = Lists.newArrayList();
+        List<T> output = CollectionUtil.newArrayList();
         if (!CollectionUtil.isEmpty(input)) {
             for (E source : input) {
                 T target = BeanUtils.instantiate(clzz);
@@ -61,4 +64,19 @@ public class CommonUtil {
         return output;
 
     }
+
+    public static Object getCommonYml(Object key){
+        Resource resource = new ClassPathResource("/application.yml");
+        Properties properties = null;
+        try {
+            YamlPropertiesFactoryBean yamlFactory = new YamlPropertiesFactoryBean();
+            yamlFactory.setResources(resource);
+            properties =  yamlFactory.getObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return properties.get(key);
+    }
+
 }

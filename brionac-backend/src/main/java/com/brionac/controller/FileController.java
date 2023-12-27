@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -30,11 +31,36 @@ public class FileController {
     @Value("${server.port}")
     private String port;
 
-    private static final String ip = "http://localhost";
+    private static String ip;
+
+    @Value("${ip.local}")
+    private String localIp;
+
+    @Value("${ip.aliyun}")
+    private String remoteIp;
+
+    @Value("${spring.profiles.active}")
+    private String active;
+
+
+    @PostConstruct
+    public void getActiveToIp() {
+        if (active.equals("dev")){
+            ip = this.localIp;
+        } else if (active.equals("prod")) {
+            ip = this.remoteIp;
+        }
+    }
+
+    public static String getIp() {
+        // lockie.zou
+        return ip;
+    }
 
     @Operation(summary = "上传文件",description = "上传文件",tags = "文件管理")
     @PostMapping("/upload")
     public Result<?> upload(MultipartFile file) throws IOException {
+        log.info("ip:{}",getIp());
         Map<String, String> map = new HashMap<>();
         try {
             // 定义文件的唯一标识
@@ -49,7 +75,7 @@ public class FileController {
             FileUtil.writeBytes(file.getBytes(), rootFilePath);
             // 返回文件的URL
             map.put("fileName", fileName);
-            map.put("fileUrl", ip + ":" + port + "/files/" + fileName);
+            map.put("fileUrl", getIp() + ":" + port + "/files/" + fileName);
         }catch (Exception e) {
             log.error("文件上传失败");
             return Result.error("501","文件上传失败");

@@ -4,6 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.brionac.aop.HasRole;
 import com.brionac.common.PageResult;
 import com.brionac.common.Result;
 import com.brionac.entity.domain.Product;
@@ -25,7 +26,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import static com.brionac.common.Common.STORE_SESSION_KEY;
+import static com.brionac.constants.Common.STORE_SESSION_KEY;
 
 /**
  * @author 亚修的小破机
@@ -49,6 +50,7 @@ public class StoreController {
     //店铺管理
     @ApiOperationSupport(order = 4)
     @Operation(summary = "店铺列表",description = "查询出全部店铺",tags = "运行商店铺管理")
+    @HasRole("运行商")
     @GetMapping("/list")
     public Result<PageResult<Store>> storeList(){
         Page<Store> storePage = storeService.storeList();
@@ -56,6 +58,7 @@ public class StoreController {
     }
 
     @Operation(summary = "店铺列表 - 过滤",description = "根据店铺名字过滤",tags = "运行商店铺管理")
+    @HasRole("运行商")
     @GetMapping("/list/filter")
     public Result<PageResult<Store>> findPage(
             @RequestParam(name = "当前页",defaultValue = "1") Integer pageNum,
@@ -74,6 +77,7 @@ public class StoreController {
     }
 
     @Operation(summary = "店铺详情",description = "根据传入店铺id查看店铺信息",tags = "运行商店铺管理")
+    @HasRole("运行商")
     @Parameter(name = "id",description = "店铺id",in = ParameterIn.PATH)
     @GetMapping("/{id}")
     public Result<Store> storeCurrent(@PathVariable("id") String id){
@@ -82,6 +86,7 @@ public class StoreController {
     }
 
     @Operation(summary = "店铺删除",description = "根据店铺id删除店铺",tags = "运行商店铺管理")
+    @HasRole("运行商")
     @Parameter(name = "id",description = "店铺id",in = ParameterIn.PATH)
     @DeleteMapping("/{id}")
     public Result<?> storeDelete(@PathVariable("id") String id,HttpServletRequest request){

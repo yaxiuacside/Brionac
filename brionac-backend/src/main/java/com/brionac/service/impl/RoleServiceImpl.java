@@ -4,12 +4,14 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.brionac.entity.domain.Role;
 import com.brionac.entity.domain.UserRole;
-import com.brionac.service.RoleService;
 import com.brionac.mapper.RoleMapper;
+import com.brionac.service.RoleService;
 import com.brionac.service.UserRoleService;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
 * @author 亚修的小破机
@@ -24,13 +26,17 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role>
     UserRoleService userRoleService;
 
     @Override
-    public String getRole(Integer userId) {
+    public List<String> getRole(Integer userId) {
 
-        UserRole userRole = userRoleService.getOne(Wrappers.<UserRole>lambdaQuery().eq(UserRole::getUserId, userId));
+        List<UserRole> userRoles = userRoleService.list(Wrappers.<UserRole>lambdaQuery().eq(UserRole::getUserId, userId));
 
-        Role role = this.getOne(Wrappers.<Role>lambdaQuery().eq(Role::getRoleId, userRole.getRoleId()));
+        List<Integer> roleIds = userRoles.stream().map(UserRole::getRoleId).collect(Collectors.toList());
 
-        return role.getRoleName();
+        List<Role> roles = this.list(Wrappers.<Role>lambdaQuery().in(Role::getRoleId,roleIds));
+
+        List<String> roleNames = roles.stream().map(Role::getRoleName).collect(Collectors.toList());
+
+        return roleNames;
 
     }
 }

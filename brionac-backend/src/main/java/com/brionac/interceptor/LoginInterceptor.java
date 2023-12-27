@@ -6,7 +6,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static com.brionac.common.Common.USER_SESSION_KEY;
+import static com.brionac.constants.Common.USER_SESSION_KEY;
 
 /**定义一个拦截器**/
 @Slf4j

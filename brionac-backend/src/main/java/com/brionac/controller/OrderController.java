@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
 
-import static com.brionac.common.Common.STORE_SESSION_KEY;
-import static com.brionac.common.Common.USER_SESSION_KEY;
+import static com.brionac.constants.Common.STORE_SESSION_KEY;
+import static com.brionac.constants.Common.USER_SESSION_KEY;
 
 /**
  * @author 亚修的小破机

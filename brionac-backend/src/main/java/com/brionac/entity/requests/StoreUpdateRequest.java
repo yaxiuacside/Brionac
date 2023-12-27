@@ -25,7 +25,7 @@ public class StoreUpdateRequest {
     /**
      * 店铺logo
      */
-    @Schema(description = "店铺logo")
+    @Schema(description = "店铺logo, 即店铺的头像, 上传的是店铺url")
     private String storeLogo;
 
     /**

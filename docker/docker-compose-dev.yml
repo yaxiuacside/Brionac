@@ -10,8 +10,8 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - D:\Temp\mydata\mysql\data:/var/lib/mysql #数据目录挂载
-      - D:\Temp\mydata\mysql\conf:/etc/mysql/conf.d #启动脚本
+      - E:\dockerdata\prod\mysql\data:/var/lib/mysql #数据目录挂载
+      - E:\dockerdata\prod\mysql\conf:/etc/mysql/conf.d #启动脚本
   brionac-backend:
     container_name: brionac-backend
     build: ../brionac-backend

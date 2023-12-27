@@ -1,11 +1,14 @@
 package com.brionac.controller;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.brionac.aop.HasRole;
 import com.brionac.common.PageResult;
 import com.brionac.common.Result;
+import com.brionac.constants.RoleEnum;
 import com.brionac.entity.domain.User;
 import com.brionac.entity.requests.UserLoginRequest;
 import com.brionac.entity.requests.UserUpdateRequest;
@@ -20,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import static com.brionac.common.Common.USER_SESSION_KEY;
+import static com.brionac.constants.Common.*;
 
 @RestController
 @RequestMapping("/user")
@@ -47,12 +50,17 @@ public class UserController {
     @GetMapping("/logout")
     public Result<?> logout(HttpServletRequest request){
         request.getSession().removeAttribute(USER_SESSION_KEY);
+        request.getSession().removeAttribute(USER_ROLE);
+        if (ObjectUtil.isNotNull(request.getSession().getAttribute(STORE_SESSION_KEY))) {
+            request.getSession().removeAttribute(STORE_SESSION_KEY);
+        }
         return Result.success("退出成功");
     }
 
     //顾客管理
     @ApiOperationSupport(order = 3)
     @Operation(summary = "顾客列表",description = "查询出全部顾客",tags = "运行商顾客管理")
+    @HasRole("运行商")
     @GetMapping("/customer/list")
     public Result<PageResult<?>> customerList(){
 
@@ -64,6 +72,7 @@ public class UserController {
     }
 
     @Operation(summary = "顾客列表 - 过滤",description = "根据用户姓名过滤",tags = "运行商顾客管理")
+    @HasRole("运行商")
     @GetMapping("/customer/list/filter")
     public Result<PageResult<User>> findPage(
           @RequestParam(name = "当前页",defaultValue = "1") Integer pageNum,
@@ -82,6 +91,7 @@ public class UserController {
 
     @Operation(summary = "顾客详情",description = "根据顾客id查询顾客详情",tags = "运行商顾客管理")
     @Parameter(name = "id",description = "用户id",in = ParameterIn.PATH)
+    @HasRole("运行商")
     @GetMapping("/customer/{id}")
     public Result<User> customerDetail(@PathVariable("id") String id){
         User user = userService.customerDetail(id);
@@ -90,6 +100,7 @@ public class UserController {
 
     @Operation(summary = "顾客删除",description = "根据顾客id删除顾客",tags = "运行商顾客管理")
     @Parameter(name = "id",description = "用户id",in = ParameterIn.PATH)
+    @HasRole("运行商")
     @DeleteMapping("/customer/{id}")
     public Result<?> customerDelete(@PathVariable("id") String id){
         userService.customerDelete(id);

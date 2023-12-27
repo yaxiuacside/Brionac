@@ -1,11 +1,13 @@
 package com.brionac.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.brionac.constants.RoleEnum;
 import com.brionac.entity.domain.Store;
 import com.brionac.entity.domain.User;
 import com.brionac.entity.domain.UserRole;
@@ -24,7 +26,9 @@ import org.springframework.util.DigestUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static com.brionac.common.Common.*;
+import java.util.List;
+
+import static com.brionac.constants.Common.*;
 import static com.brionac.utils.CommonUtil.getNullPropertyNames;
 
 /**
@@ -85,12 +89,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         log.info("登录成功, 用户信息注入session: "+user);
         request.getSession().setAttribute(USER_SESSION_KEY,user);
 
-        String role = roleService.getRole(user.getUserId());
-        if(!role.isEmpty() && role.equals("店铺")){
+        List<String> roles = roleService.getRole(user.getUserId());
+
+        if(CollectionUtil.contains(roles, RoleEnum.Shop.getRoleName())){
+
             Store store = storeService.detail(user.getUserId());
             log.info("登录用户为店铺, 店铺信息注入session: "+store);
             request.getSession().setAttribute(STORE_SESSION_KEY,store);
+
         }
+        //身份注入
+        request.getSession().setAttribute(USER_ROLE, roles);
 
         return user;
     }

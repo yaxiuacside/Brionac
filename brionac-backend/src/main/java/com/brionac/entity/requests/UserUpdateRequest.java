@@ -63,4 +63,10 @@ public class UserUpdateRequest{
     @Schema(description = "用户地址")
     private String userAddress;
 
+    /**
+     * 用户头像
+     */
+    @Schema(description = "用户头像")
+    private String avatarUrl;
+
 }

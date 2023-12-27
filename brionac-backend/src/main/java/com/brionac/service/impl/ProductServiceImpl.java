@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.List;
 
-import static com.brionac.common.Common.COMMON_YES;
+import static com.brionac.constants.Common.COMMON_YES;
 
 /**
 * @author 亚修的小破机

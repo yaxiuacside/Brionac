@@ -37,6 +37,7 @@ public class WebConfig implements WebMvcConfigurer {
                 "/swagger-ui/index.html",
                 "/**/login",
                 "/**/register",
+                "/customer/product/**"
                 };
 
         //完成拦截器的注册

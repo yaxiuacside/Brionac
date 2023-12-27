@@ -4,7 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.brionac.common.OrderState;
+import com.brionac.constants.OrderState;
 import com.brionac.common.PageResult;
 import com.brionac.common.Result;
 import com.brionac.entity.domain.BrionacOrder;
@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
 
-import static com.brionac.common.Common.USER_SESSION_KEY;
+import static com.brionac.constants.Common.USER_SESSION_KEY;
 
 /**
  * @author 亚修的小破机

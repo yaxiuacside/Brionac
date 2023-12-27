@@ -4,18 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa08be1d-2d5e-4b0e-8b11-887a24059cee" name="Changes" comment="完善结构, 文件上传功能完成">
-      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="aa08be1d-2d5e-4b0e-8b11-887a24059cee" name="Changes" comment="多环境搭建配置完成">
+      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/aop/HasRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/aop/HasRoleAspect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/constants/RoleEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8ff73093-72f9-4ab8-a80b-c178869295e6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8ff73093-72f9-4ab8-a80b-c178869295e6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f5ac9b9f-e183-40ad-bdbc-25e0244fbdb6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f5ac9b9f-e183-40ad-bdbc-25e0244fbdb6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/brionac-backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/brionac-backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/config/SwaggerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/resources/application-dev.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.env.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.service.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/common/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/constants/Common.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/common/OrderState.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/constants/OrderState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/FileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/StoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/StoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/StoreUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/StoreUpdateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/UserUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/entity/requests/UserUpdateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/interceptor/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/interceptor/LoginInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/RoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/StoreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/StoreServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/utils/CommonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/utils/CommonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/resources/application-dev.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brionac-backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/brionac-backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/docker-compose-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose-dev.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +47,8 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -98,7 +120,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "dev",
     "jdk.selected.JAVA_MODULE": "1.8",
     "last_opened_file_path": "E:/Code/Brionac/docker",
     "node.js.detected.package.eslint": "true",
@@ -106,7 +128,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "MavenSettings",
@@ -119,7 +141,8 @@
     ],
     "RunConfigurationTargetLRU": [
       "8ff73093-72f9-4ab8-a80b-c178869295e6/schema/\"brionac\"",
-      "f5ac9b9f-e183-40ad-bdbc-25e0244fbdb6"
+      "f5ac9b9f-e183-40ad-bdbc-25e0244fbdb6",
+      "25002818-dbfe-4070-b20d-cdc7d37c1b0f"
     ]
   }
 }]]></component>
@@ -138,6 +161,9 @@
       <recent name="D:\桌面\作业\大三上\Web\课设\Brionac\src\main\resources" />
       <recent name="D:\桌面\作业\大三上\Web\课设\Brionac\brionac-backend\src\main\resources" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.brionac" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.brionac.controller" />
       <recent name="com.brionac.entity.requests" />
@@ -152,7 +178,19 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Docker.docker/docker-compose-dev.yml: Compose Deployment">
+  <component name="RunManager" selected="Spring Boot.App">
+    <configuration name="ddl.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/sql/ddl.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="25002818-dbfe-4070-b20d-cdc7d37c1b0f" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dml.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/sql/dml.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="f5ac9b9f-e183-40ad-bdbc-25e0244fbdb6" />
+      <method v="2" />
+    </configuration>
     <configuration name="App" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="brionac-backend" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.brionac.App" />
@@ -178,22 +216,6 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="brionac-backend/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="sourceFilePath" value="brionac-backend/Dockerfile" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker/docker-compose-dev.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="docker/docker-compose-dev.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <configuration name="docker/docker-compose-prod.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -202,21 +224,12 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker/docker-compose.env.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="docker/docker-compose.env.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.docker/docker-compose-dev.yml: Compose Deployment" />
-        <item itemvalue="Docker.docker/docker-compose-prod.yml: Compose Deployment" />
         <item itemvalue="Spring Boot.App" />
-        <item itemvalue="Docker.docker/docker-compose.env.yml: Compose Deployment" />
-        <item itemvalue="Docker.brionac-backend/Dockerfile" />
+        <item itemvalue="Database Script.ddl.sql" />
+        <item itemvalue="Docker.docker/docker-compose-prod.yml: Compose Deployment" />
+        <item itemvalue="Database Script.dml.sql" />
       </list>
     </recent_temporary>
   </component>
@@ -322,7 +335,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/UserServiceImpl.java</url>
-          <line>100</line>
+          <line>109</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -332,7 +345,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/UserServiceImpl.java</url>
-          <line>135</line>
+          <line>144</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -349,6 +362,11 @@
           <url>file://$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/service/impl/BrionacOrderServiceImpl.java</url>
           <line>82</line>
           <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/brionac-backend/src/main/java/com/brionac/aop/HasRoleAspect.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

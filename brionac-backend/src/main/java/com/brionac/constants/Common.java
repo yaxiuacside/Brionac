@@ -1,4 +1,4 @@
-package com.brionac.common;
+package com.brionac.constants;
 
 /**
  * @author 亚修的小破机
@@ -12,6 +12,8 @@ public interface Common {
     String USER_SESSION_KEY = "brionacUser";
 
     String STORE_SESSION_KEY = "brionacStore";
+
+    String USER_ROLE = "role";
 
     Integer COMMON_YES = 1;
     Integer COMMON_NO = 0;

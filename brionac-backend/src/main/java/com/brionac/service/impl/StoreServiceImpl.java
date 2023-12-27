@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import static com.brionac.common.Common.*;
+import static com.brionac.constants.Common.*;
 import static com.brionac.utils.CommonUtil.getNullPropertyNames;
 
 /**
